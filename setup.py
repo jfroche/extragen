@@ -1,14 +1,12 @@
 from setuptools import setup, find_packages
-import sys, os
 
 version = '0.1'
 
 setup(name='extragen',
       version=version,
       description="",
-      long_description="""\
-""",
-      classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+      long_description=open('README.rst').read(),
+      classifiers=[],
       keywords='',
       author='',
       author_email='',
