@@ -41,24 +41,25 @@ It outputs a python module in the current directory.
 
 ::
 
-        def setup():
-                db = getDb('sanitel')
-                Bovine = db.getMapper('BOVINE')
+        from Bovines import Bovine
+
+        def setup(session):
                 bovine1 = Bovine()
                 bovine1.name = 'Marguerite'
                 bovine1.age = 3
-                db.save(bovine)
+                session.save(bovine)
                 bovine2 = Bovine()
                 bovine2.name = 'Antoinette'
                 bovine1.age = 4
-                db.save(bovine2)
-                db.flush()
+                session.save(bovine2)
+                session.flush()
 
 ::
 
         class TestAdultBovines(TestCase):
                 def setUp(self):
-                        setup_adultBovines.setup()
+                        db = getDb('sanitel')
+                        setup_adultBovines.setup(db.session)
 
                 def testOlder(self):
                         from bovines import adultBovines
